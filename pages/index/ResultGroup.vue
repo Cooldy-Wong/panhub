@@ -3,12 +3,12 @@
     <div class="card__header">
       <div class="badge" :style="{ background: color }">{{ icon }}</div>
       <h3 class="card__title">{{ title }}</h3>
-      <span class="card__count">{{ items.length }} 个资源</span>
+      <span class="card__count">{{ items.length }} 個資源</span>
       <button
         v-if="canToggleCollapse && !expanded && items.length > initialVisible"
         class="link"
         @click="$emit('toggle')">
-        展开
+        展開
       </button>
     </div>
     <ul class="card__list">
@@ -17,19 +17,19 @@
           r.note || r.url
         }}</a>
         <div class="item__meta">
-          <span class="pill">{{ formatDate(r.datetime) || "时间未知" }}</span>
+          <span class="pill">{{ formatDate(r.datetime) || "時間未知" }}</span>
           <span v-if="r.password" class="pill pill--ok"
-            >提取码: {{ r.password }}</span
+            >提取碼: {{ r.password }}</span
           >
           <button class="link" @click.prevent="$emit('copy', r.url)">
-            复制
+            複製
           </button>
         </div>
       </li>
     </ul>
     <div v-if="!expanded && items.length > initialVisible" class="card__footer">
       <button class="btn btn--ghost" @click="$emit('toggle')">
-        显示更多 ({{ items.length - initialVisible }})
+        顯示更多 ({{ items.length - initialVisible }})
       </button>
     </div>
   </div>
