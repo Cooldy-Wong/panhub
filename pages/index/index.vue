@@ -4,7 +4,7 @@
       <div class="hero__logo">
         <img src="/logo.png" alt="logo" />
       </div>
-      <div class="hero__subtitle">全网最全的网盘搜索工具</div>
+      <div class="hero__subtitle">全網最全的網盤搜索工具</div>
     </header>
 
     <SearchBox
@@ -44,7 +44,7 @@
 
     <section v-else-if="searched && !loading" class="empty">
       <div class="card">
-        <div class="empty__inner">未找到相关资源，试试其他关键词</div>
+        <div class="empty__inner">未找到相關資源，試試其他關鍵詞</div>
       </div>
     </section>
 
@@ -68,19 +68,19 @@ const apiBase = (config.public?.apiBase as string) || "/api";
 const siteUrl = (config.public?.siteUrl as string) || "";
 
 useSeoMeta({
-  title: "PanHub - 全网最全的网盘搜索",
+  title: "PanHub - 全網最全的網盤搜索",
   description:
-    "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
-  ogTitle: "PanHub - 全网最全的网盘搜索",
+    "聚合阿里云盤、夸克、百度網盤、115、迅雷等平臺，實時檢索各類分享鏈接與資源，免費、快速、無廣告。",
+  ogTitle: "PanHub - 全網最全的網盤搜索",
   ogDescription:
-    "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
+    "聚合阿里云盤、夸克、百度網盤、115、迅雷等平臺，實時檢索各類分享鏈接與資源，免費、快速、無廣告。",
   ogType: "website",
   ogSiteName: "PanHub",
   ogImage: siteUrl ? `${siteUrl}/og.svg` : "/og.svg",
   twitterCard: "summary_large_image",
-  twitterTitle: "PanHub - 全网最全的网盘搜索",
+  twitterTitle: "PanHub - 全網最全的網盤搜索",
   twitterDescription:
-    "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
+    "聚合阿里云盤、夸克、百度網盤、115、迅雷等平臺，實時檢索各類分享鏈接與資源，免費、快速、無廣告。",
   twitterImage: siteUrl ? `${siteUrl}/og.svg` : "/og.svg",
 });
 
@@ -90,7 +90,7 @@ useHead({
     {
       name: "keywords",
       content:
-        "网盘搜索, 阿里云盘搜索, 夸克网盘搜索, 百度网盘搜索, 115 网盘, 迅雷云盘, 资源搜索, 盘搜, PanHub",
+        "網盤搜索, 阿里云盤搜索, 夸克網盤搜索, 百度網盤搜索, 115 網盤, 迅雷雲盤, 資源搜索, 盤搜, PanHub",
     },
   ],
   script: [
@@ -112,10 +112,10 @@ useHead({
 });
 
 const placeholder =
-  "搜索网盘资源，支持百度云、阿里云盘、夸克网盘、115网盘、迅雷云盘、天翼云盘、123网盘、移动云盘、UC网盘等";
+  "搜索網盤資源，支援百度云、阿里云盤、夸克網盤、115網盤、迅雷雲盤、天翼云盤、123網盤、移動云盤、UC網盤等";
 
 const kw = ref("");
-// 默认快速搜索，后续自动触发深度搜索
+// 預設快速搜索，後續自動觸發深度搜索
 const mode = ref<"fast" | "deep">("fast");
 
 const isFocused = ref(false);
@@ -136,11 +136,11 @@ const filterPlatform = ref<string>("all");
 const initialVisible = 3;
 const expandedSet = ref<Set<string>>(new Set());
 
-// 设置相关
+// 設定相關
 const openSettings = ref(false);
 interface UserSettings {
   enabledTgChannels: string[];
-  enabledPlugins: string[]; // 选中的插件名
+  enabledPlugins: string[]; // 選中的外掛名
   concurrency: number;
   pluginTimeoutMs: number;
 }
@@ -213,7 +213,7 @@ function resetToDefault() {
   settings.value = { ...DEFAULT_SETTINGS };
 }
 
-// 全部插件名（与服务端注册名一致）
+// 全部外掛名（與服務端註冊名一致）
 const ALL_PLUGIN_NAMES = [
   "pansearch",
   "qupansou",
@@ -227,7 +227,7 @@ const ALL_PLUGIN_NAMES = [
   "nyaa",
 ];
 
-// 合并深度搜索返回的 merged_by_type（按 url 去重）
+// 合併深度搜索返回的 merged_by_type（按 url 去重）
 function mergeMergedByType(
   target: MergedLinks,
   incoming?: MergedLinks
@@ -250,7 +250,7 @@ function mergeMergedByType(
   return out;
 }
 
-let searchSeq = 0; // 取消旧搜索用
+let searchSeq = 0; // 取消舊搜索用
 const activeControllers: AbortController[] = [];
 function cancelActiveRequests() {
   for (const c of activeControllers) {
@@ -261,23 +261,23 @@ function cancelActiveRequests() {
   activeControllers.length = 0;
 }
 
-// 已移除热搜相关功能
+// 已移除熱搜相關功能
 
-// 平台可视化信息
+// 平臺視覺化資訊
 const platformInfo: Record<
   string,
   { name: string; color: string; icon: string }
 > = {
-  aliyun: { name: "阿里云盘", color: "#7c3aed", icon: "☁️" },
-  quark: { name: "夸克网盘", color: "#6366f1", icon: "🔎" },
-  baidu: { name: "百度网盘", color: "#2563eb", icon: "🧰" },
-  "115": { name: "115网盘", color: "#f59e0b", icon: "📦" },
-  xunlei: { name: "迅雷云盘", color: "#fbbf24", icon: "⚡" },
-  uc: { name: "UC网盘", color: "#ef4444", icon: "🧭" },
-  tianyi: { name: "天翼云盘", color: "#ec4899", icon: "☁️" },
-  "123": { name: "123网盘", color: "#10b981", icon: "#" },
-  mobile: { name: "移动云盘", color: "#0ea5e9", icon: "📱" },
-  others: { name: "其他网盘", color: "#6b7280", icon: "…" },
+  aliyun: { name: "阿里云盤", color: "#7c3aed", icon: "☁️" },
+  quark: { name: "夸克網盤", color: "#6366f1", icon: "🔎" },
+  baidu: { name: "百度網盤", color: "#2563eb", icon: "🧰" },
+  "115": { name: "115網盤", color: "#f59e0b", icon: "📦" },
+  xunlei: { name: "迅雷雲盤", color: "#fbbf24", icon: "⚡" },
+  uc: { name: "UC網盤", color: "#ef4444", icon: "🧭" },
+  tianyi: { name: "天翼云盤", color: "#ec4899", icon: "☁️" },
+  "123": { name: "123網盤", color: "#10b981", icon: "#" },
+  mobile: { name: "移動云盤", color: "#0ea5e9", icon: "📱" },
+  others: { name: "其他網盤", color: "#6b7280", icon: "…" },
 };
 
 const platforms = computed(() => Object.keys(merged.value));
@@ -310,7 +310,7 @@ function setMode(m: "fast" | "deep") {
   mode.value = m;
   if (typeof window !== "undefined") localStorage.setItem("searchMode", m);
 }
-// 分类与热搜入口已移除
+// 分類與熱搜入口已移除
 function isExpanded(type: string) {
   return expandedSet.value.has(type);
 }
@@ -319,7 +319,7 @@ function toggleExpand(type: string) {
   else expandedSet.value.add(type);
 }
 function handleToggle(type: string) {
-  // 点击展开/查看更多时，切换到对应平台 Tab，并展开
+  // 點選展開/檢視更多時，切換到對應平臺 Tab，並展開
   filterPlatform.value = type;
 }
 function visibleItems(type: string, items: any[]) {
@@ -371,10 +371,10 @@ async function copyLink(url: string) {
   } catch {}
 }
 
-// 失效标记功能暂时移除（无真实接口）
+// 失效標記功能暫時移除（無真實介面）
 
 function resetSearch() {
-  // 取消进行中的请求并阻止老搜索写回
+  // 取消進行中的請求並阻止老搜索寫回
   cancelActiveRequests();
   searchSeq++;
   kw.value = "";
@@ -386,24 +386,24 @@ function resetSearch() {
   deepLoading.value = false;
 }
 
-// 热搜功能暂时移除（无真实接口）
+// 熱搜功能暫時移除（無真實介面）
 
-// 已去除随机合集
+// 已去除隨機合集
 
 async function onSearch() {
   if (!kw.value || loading.value) return;
 
-  // iOS Safari兼容性：确保输入框失去焦点并添加延迟
+  // iOS Safari相容性：確保輸入框失去焦點並新增延遲
   if (
     typeof window !== "undefined" &&
     document.activeElement instanceof HTMLInputElement
   ) {
     document.activeElement.blur();
-    // 添加小延迟确保焦点处理完成
+    // 新增小延遲確保焦點處理完成
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
 
-  // 每次搜索前读取最新设置，避免跨页面/跨组件状态不同步
+  // 每次搜索前讀取最新設定，避免跨頁面/跨元件狀態不同步
   loadSettings();
   loading.value = true;
   error.value = "";
@@ -416,7 +416,7 @@ async function onSearch() {
   const mySeq = ++searchSeq;
   const start = performance.now();
   try {
-    // 计算用户选择
+    // 計算使用者選擇
     const enabledPlugins = settings.value.enabledPlugins.filter((n) =>
       ALL_PLUGIN_NAMES.includes(n)
     );
@@ -424,10 +424,10 @@ async function onSearch() {
       (settings.value.enabledTgChannels?.length || 0) === 0 &&
       enabledPlugins.length === 0
     ) {
-      throw new Error("请先在设置中选择至少一个搜索来源");
+      throw new Error("請先在設定中選擇至少一個搜索來源");
     }
 
-    // 工具：把逗号分隔字符串转成数组
+    // 工具：把逗號分隔字串轉成陣列
     const parseList = (s: string | undefined): string[] => {
       if (!s) return [];
       return s
@@ -436,12 +436,12 @@ async function onSearch() {
         .filter((x) => !!x);
     };
 
-    // 1) 快速搜索：按“并发数 conc”选择同等数量的插件进行首批请求
+    // 1) 快速搜索：按「併發數 conc」選擇同等數量的外掛進行首批請求
     const conc = Math.min(
       16,
       Math.max(1, Number(settings.value.concurrency || 3))
     );
-    const batchSize = conc; // 单批插件数量 = 并发数
+    const batchSize = conc; // 單批外掛數量 = 併發數
     const fastPluginsArr = enabledPlugins.slice(0, conc);
     const userTgChannels = settings.value.enabledTgChannels || [];
     const tgBatched = userTgChannels.length > 0;
@@ -516,7 +516,7 @@ async function onSearch() {
       0
     );
 
-    // 2) 持续深度搜索：插件按“并发数”为批大小推进；TG 仍按 3 个一批
+    // 2) 持續深度搜索：外掛按「併發數」為批大小推進；TG 仍按 3 個一批
     const restPlugins = enabledPlugins.slice(3);
     const pluginBatches: string[][] = [];
     for (let i = 0; i < restPlugins.length; i += batchSize) {
@@ -599,12 +599,12 @@ async function onSearch() {
           0
         );
       } catch {
-        // 单批失败忽略
+        // 單批失敗忽略
       }
     }
     deepLoading.value = false;
   } catch (e: any) {
-    error.value = e?.data?.message || e?.message || "请求失败";
+    error.value = e?.data?.message || e?.message || "請求失敗";
   } finally {
     elapsedMs.value = Math.round(performance.now() - start);
     loading.value = false;
@@ -619,7 +619,7 @@ onMounted(() => {
 <style scoped>
 .home {
   max-width: 1200px;
-  margin: 24px auto 0; /* 去掉底部 40px 外边距，初始不出现滚动条 */
+  margin: 24px auto 0; /* 去掉底部 40px 外邊距，初始不出現滾動條 */
   padding: 0 16px 16px;
 }
 .toolsbar {
@@ -673,9 +673,9 @@ onMounted(() => {
   outline: none;
   font-size: 16px;
 }
-/* 模式切换已移除 */
+/* 模式切換已移除 */
 
-/* 分类与热搜入口样式已移除 */
+/* 分類與熱搜入口樣式已移除 */
 
 .result-header {
   display: flex;
@@ -706,7 +706,7 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   margin: 6px 2px 4px;
-  min-width: 180px; /* 避免布局变化时抖动 */
+  min-width: 180px; /* 避免佈局變化時抖動 */
 }
 .statusbar .muted {
   color: #666;
@@ -887,7 +887,7 @@ onMounted(() => {
   gap: 12px;
   padding-bottom: 4px;
 }
-/* 占位选择器移除 */
+/* 佔位選擇器移除 */
 
 .empty .card {
   padding: 16px;
@@ -906,9 +906,9 @@ onMounted(() => {
   margin-top: 12px;
 }
 
-/* 设置抽屉样式由子组件自带，这里保留通用工具条样式 */
+/* 設定抽屜樣式由子元件自帶，這裡保留通用工具條樣式 */
 
-/* 小屏优化与安全区适配 */
+/* 小屏優化與安全區適配 */
 @media (max-width: 640px) {
   .home {
     margin-top: 12px;
