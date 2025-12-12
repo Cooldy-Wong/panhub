@@ -56,9 +56,9 @@ const isFocused = ref(false);
 const inputEl = ref<HTMLInputElement | null>(null);
 const touchStartTime = ref(0);
 
-// 处理搜索按钮点击
+// 處理搜索按鈕點選
 function handleSearch() {
-  // iOS Safari兼容性：确保输入框失去焦点
+  // iOS Safari相容性：確保輸入框失去焦點
   if (
     typeof window !== "undefined" &&
     document.activeElement instanceof HTMLInputElement
@@ -66,30 +66,30 @@ function handleSearch() {
     document.activeElement.blur();
   }
 
-  // 添加小延迟确保焦点处理完成
+  // 新增小延遲確保焦點處理完成
   setTimeout(() => {
     emit("search");
   }, 50);
 }
 
-// 处理触摸开始事件
+// 處理觸控開始事件
 function handleTouchStart() {
   touchStartTime.value = Date.now();
 }
 
-// 处理触摸结束事件
+// 處理觸控結束事件
 function handleTouchEnd() {
   const touchDuration = Date.now() - touchStartTime.value;
-  // 如果触摸时间太短，可能是误触，不执行操作
+  // 如果觸控時間太短，可能是誤觸，不執行操作
   if (touchDuration < 50) {
     return;
   }
 }
 
 onMounted(() => {
-  // 等待一帧后再聚焦，避免与 SSR/过渡阶段冲突
+  // 等待一幀后再聚焦，避免與 SSR/過渡階段衝突
   requestAnimationFrame(() => {
-    // iOS Safari兼容性：使用setTimeout确保DOM完全渲染
+    // iOS Safari相容性：使用setTimeout確保DOM完全渲染
     setTimeout(() => {
       inputEl.value?.focus();
     }, 100);
@@ -110,7 +110,7 @@ onMounted(() => {
   border: 1px solid #e5e7eb;
   background: #fff;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
-  /* iOS Safari兼容性：防止缩放 */
+  /* iOS Safari相容性：防止縮放 */
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -119,7 +119,7 @@ onMounted(() => {
 }
 .search__icon {
   opacity: 0.6;
-  /* iOS Safari兼容性：防止图标被缩放 */
+  /* iOS Safari相容性：防止圖示被縮放 */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -128,13 +128,13 @@ onMounted(() => {
   border: 0;
   outline: none;
   font-size: 16px;
-  /* iOS Safari兼容性：防止输入框缩放 */
+  /* iOS Safari相容性：防止輸入框縮放 */
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   border-radius: 0;
-  /* iOS Safari兼容性：防止自动缩放 */
+  /* iOS Safari相容性：防止自動縮放 */
   -webkit-text-size-adjust: 100%;
-  /* iOS Safari兼容性：改善输入体验 */
+  /* iOS Safari相容性：改善輸入體驗 */
   -webkit-tap-highlight-color: transparent;
 }
 .btn {
@@ -144,13 +144,13 @@ onMounted(() => {
   color: #111;
   border-radius: 10px;
   cursor: pointer;
-  /* iOS Safari兼容性：防止按钮缩放 */
+  /* iOS Safari相容性：防止按鈕縮放 */
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent;
-  /* iOS Safari兼容性：改善触摸体验 */
+  /* iOS Safari相容性：改善觸控體驗 */
   -webkit-user-select: none;
   user-select: none;
-  /* iOS Safari兼容性：防止按钮被缩放 */
+  /* iOS Safari相容性：防止按鈕被縮放 */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -158,7 +158,7 @@ onMounted(() => {
   background: #f6f7f9;
 }
 .btn:active {
-  /* iOS Safari兼容性：触摸反馈 */
+  /* iOS Safari相容性：觸控反饋 */
   background: #e5e7eb;
   transform: scale(0.98);
 }
@@ -183,7 +183,7 @@ onMounted(() => {
   background: transparent;
 }
 
-/* 小屏优化：按钮换行、输入占满 */
+/* 小屏優化：按鈕換行、輸入佔滿 */
 @media (max-width: 640px) {
   .search__box {
     flex-wrap: wrap;
@@ -195,33 +195,33 @@ onMounted(() => {
   .search__box input {
     width: 100%;
     font-size: 15px;
-    /* iOS Safari兼容性：确保输入框在小屏幕上正常工作 */
+    /* iOS Safari相容性：確保輸入框在小螢幕上正常工作 */
     -webkit-appearance: none;
     -webkit-border-radius: 0;
   }
   .btn {
     padding: 8px 10px;
     font-size: 14px;
-    /* iOS Safari兼容性：确保按钮在小屏幕上正常工作 */
+    /* iOS Safari相容性：確保按鈕在小螢幕上正常工作 */
     min-height: 44px;
     min-width: 44px;
   }
 }
 
-/* iOS Safari特定优化 */
+/* iOS Safari特定優化 */
 @supports (-webkit-touch-callout: none) {
   .search__box input {
-    /* iOS Safari兼容性：防止输入框出现默认样式 */
+    /* iOS Safari相容性：防止輸入框出現預設樣式 */
     -webkit-appearance: none;
     -webkit-border-radius: 0;
     border-radius: 0;
   }
 
   .btn {
-    /* iOS Safari兼容性：确保按钮有足够的触摸区域 */
+    /* iOS Safari相容性：確保按鈕有足夠的觸控區域 */
     min-height: 44px;
     min-width: 44px;
-    /* iOS Safari兼容性：防止按钮出现默认样式 */
+    /* iOS Safari相容性：防止按鈕出現預設樣式 */
     -webkit-appearance: none;
     -webkit-border-radius: 10px;
   }
