@@ -10,7 +10,7 @@
     ">
     <div class="drawer">
       <header class="drawer__header">
-        <strong>搜索设置</strong>
+        <strong>搜索設定</strong>
         <button
           class="btn"
           @click="
@@ -19,16 +19,16 @@
               $emit('update:open', false);
             }
           ">
-          关闭
+          關閉
         </button>
       </header>
 
       <section class="drawer__section">
         <div class="section__title">
-          <strong>插件来源</strong>
+          <strong>外掛來源</strong>
           <div class="section__tools">
-            <button class="btn" @click="onSelectAll">全选</button>
-            <button class="btn" @click="onClearAll">全不选</button>
+            <button class="btn" @click="onSelectAll">全選</button>
+            <button class="btn" @click="onClearAll">全不選</button>
           </div>
         </div>
         <div class="plugin-grid">
@@ -45,10 +45,10 @@
 
       <section class="drawer__section">
         <div class="section__title">
-          <strong>频道来源</strong>
+          <strong>頻道來源</strong>
           <div class="section__tools">
-            <button class="btn" @click="onSelectAllTg">全选</button>
-            <button class="btn" @click="onClearAllTg">全不选</button>
+            <button class="btn" @click="onSelectAllTg">全選</button>
+            <button class="btn" @click="onClearAllTg">全不選</button>
           </div>
         </div>
         <div class="plugin-grid">
@@ -64,9 +64,9 @@
       </section>
 
       <section class="drawer__section">
-        <div class="section__title"><strong>性能与并发</strong></div>
+        <div class="section__title"><strong>效能與併發</strong></div>
         <div class="row" style="margin-bottom: 8px">
-          <label class="label" style="width: 120px">插件并发数</label>
+          <label class="label" style="width: 120px">外掛併發數</label>
           <input
             type="number"
             min="1"
@@ -75,13 +75,13 @@
             @change="saveTemp"
             class="input"
             :placeholder="String(DEFAULT_CONCURRENCY)"
-            :title="`默认 ${DEFAULT_CONCURRENCY}，范围 1-16`" />
+            :title="`預設 ${DEFAULT_CONCURRENCY}，範圍 1-16`" />
           <span style="font-size: 12px; color: #666"
-            >默认 {{ DEFAULT_CONCURRENCY }}，范围 1-16</span
+            >預設 {{ DEFAULT_CONCURRENCY }}，範圍 1-16</span
           >
         </div>
         <div class="row">
-          <label class="label" style="width: 120px">插件超时(ms)</label>
+          <label class="label" style="width: 120px">外掛超時(ms)</label>
           <input
             type="number"
             min="1000"
@@ -90,15 +90,15 @@
             @change="saveTemp"
             class="input"
             :placeholder="String(DEFAULT_PLUGIN_TIMEOUT)"
-            :title="`默认 ${DEFAULT_PLUGIN_TIMEOUT} ms`" />
+            :title="`預設 ${DEFAULT_PLUGIN_TIMEOUT} ms`" />
           <span style="font-size: 12px; color: #666"
-            >默认 {{ DEFAULT_PLUGIN_TIMEOUT }} ms</span
+            >預設 {{ DEFAULT_PLUGIN_TIMEOUT }} ms</span
           >
         </div>
       </section>
 
       <footer class="drawer__footer">
-        <button class="btn" @click="$emit('reset-default')">恢复默认</button>
+        <button class="btn" @click="$emit('reset-default')">恢復預設</button>
       </footer>
     </div>
   </div>
@@ -240,7 +240,7 @@ function onClearAllTg() {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-width: 0; /* 允许内部省略号生效 */
+  min-width: 0; /* 允許內部省略號生效 */
 }
 .plugin-item span {
   display: inline-block;
