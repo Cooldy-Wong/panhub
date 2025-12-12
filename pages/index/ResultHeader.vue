@@ -17,13 +17,13 @@
       </div>
     </div>
     <div class="right">
-      <span v-if="deepLoading" class="deep-pill">持续搜索中…</span>
+      <span v-if="deepLoading" class="deep-pill">持續搜索中…</span>
       <div class="stats" v-if="total > 0 && elapsedMs > 0">
         <span
-          >结果: <strong>{{ total }}</strong></span
+          >結果: <strong>{{ total }}</strong></span
         >
         <span
-          >用时: <strong>{{ elapsedMs }}ms</strong></span
+          >用時: <strong>{{ elapsedMs }}ms</strong></span
         >
       </div>
       <div class="sorter" v-if="hasResults">
@@ -34,11 +34,11 @@
             @change="
               $emit('change-sort', ($event.target as HTMLSelectElement).value)
             ">
-            <option value="default">默认</option>
-            <option value="date-desc">时间(新→旧)</option>
-            <option value="date-asc">时间(旧→新)</option>
-            <option value="name-asc">名称(A→Z)</option>
-            <option value="name-desc">名称(Z→A)</option>
+            <option value="default">預設</option>
+            <option value="date-desc">時間(新→舊)</option>
+            <option value="date-asc">時間(舊→新)</option>
+            <option value="name-asc">名稱(A→Z)</option>
+            <option value="name-desc">名稱(Z→A)</option>
           </select>
         </label>
       </div>
@@ -71,7 +71,7 @@ const currentSort = computed(() =>
     : props.model.sortType
 );
 
-// 交互通过事件通知父组件处理，避免在子组件内直接修改 props
+// 互動通過事件通知父元件處理，避免在子元件內直接修改 props
 </script>
 
 <style scoped>
@@ -117,7 +117,7 @@ const currentSort = computed(() =>
   border-color: #111;
 }
 
-/* 小屏优化 */
+/* 小屏優化 */
 @media (max-width: 640px) {
   .result-header {
     flex-direction: column;
@@ -146,6 +146,6 @@ const currentSort = computed(() =>
 .deep-pill {
   white-space: nowrap;
   flex: 0 0 auto;
-  order: 99; /* 放在平台 pill 之后显示 */
+  order: 99; /* 放在平臺 pill 之後顯示 */
 }
 </style>
