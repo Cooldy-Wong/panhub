@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <header class="hero">
-      <div class="hero__title">PanHub API 文档</div>
-      <div class="hero__subtitle">网盘搜索服务 API 接口文档</div>
+      <div class="hero__title">PanHub API 文件</div>
+      <div class="hero__subtitle">網盤搜索服務 API 介面文件</div>
     </header>
 
     <div class="content">
@@ -12,18 +12,18 @@
         <div class="overview">
           <p>
             PanHub API
-            提供了强大的网盘搜索功能，支持多个搜索源和插件。通过简单的 HTTP
-            请求即可获取网盘资源信息。
+            提供了強大的網盤搜索功能，支援多個搜索源和外掛。通過簡單的 HTTP
+            請求即可獲取網盤資源資訊。
           </p>
           <p>
-            <strong>主要接口：</strong>
+            <strong>主要介面：</strong>
           </p>
           <ul>
             <li>
-              <code>/api/search</code> - 网盘搜索接口，支持 GET 和 POST 请求
+              <code>/api/search</code> - 網盤搜索介面，支援 GET 和 POST 請求
             </li>
             <li>
-              <code>/api/health</code> - 健康检查接口，返回可用的插件和频道列表
+              <code>/api/health</code> - 健康檢查介面，返回可用的外掛和頻道列表
             </li>
           </ul>
           <div class="endpoint-info">
@@ -43,19 +43,19 @@
         </div>
       </section>
 
-      <!-- 请求参数 -->
+      <!-- 請求參數 -->
       <section class="section">
-        <h2 class="section__title">请求参数</h2>
+        <h2 class="section__title">請求參數</h2>
 
         <div class="params-table">
           <table>
             <thead>
               <tr>
-                <th>参数名</th>
-                <th>类型</th>
+                <th>參數名</th>
+                <th>型別</th>
                 <th>必填</th>
-                <th>默认值</th>
-                <th>说明</th>
+                <th>預設值</th>
+                <th>說明</th>
               </tr>
             </thead>
             <tbody>
@@ -64,49 +64,49 @@
                 <td>string</td>
                 <td><span class="required">是</span></td>
                 <td>-</td>
-                <td>搜索关键词</td>
+                <td>搜索關鍵詞</td>
               </tr>
               <tr>
                 <td><code>channels</code></td>
                 <td>string[] | string</td>
                 <td>否</td>
                 <td>-</td>
-                <td>Telegram 频道列表，支持逗号分隔的字符串或数组</td>
+                <td>Telegram 頻道列表，支援逗號分隔的字串或陣列</td>
               </tr>
               <tr>
                 <td><code>plugins</code></td>
                 <td>string[] | string</td>
                 <td>否</td>
                 <td>-</td>
-                <td>插件列表，支持逗号分隔的字符串或数组</td>
+                <td>外掛列表，支援逗號分隔的字串或陣列</td>
               </tr>
               <tr>
                 <td><code>cloud_types</code></td>
                 <td>string[] | string</td>
                 <td>否</td>
                 <td>-</td>
-                <td>云盘类型过滤，如：aliyun,baidu,onedrive</td>
+                <td>云盤型別過濾，如：aliyun,baidu,onedrive</td>
               </tr>
               <tr>
                 <td><code>conc</code></td>
                 <td>number</td>
                 <td>否</td>
                 <td>10</td>
-                <td>并发数量限制</td>
+                <td>併發數量限制</td>
               </tr>
               <tr>
                 <td><code>refresh</code></td>
                 <td>boolean</td>
                 <td>否</td>
                 <td>false</td>
-                <td>是否强制刷新缓存</td>
+                <td>是否強制重新整理快取</td>
               </tr>
               <tr>
                 <td><code>res</code></td>
                 <td>string</td>
                 <td>否</td>
                 <td>merged_by_type</td>
-                <td>响应格式：merged_by_type | results | all</td>
+                <td>響應格式：merged_by_type | results | all</td>
               </tr>
               <tr>
                 <td><code>src</code></td>
@@ -120,26 +120,26 @@
                 <td>object</td>
                 <td>否</td>
                 <td>{}</td>
-                <td>扩展参数，JSON 格式</td>
+                <td>擴充套件參數，JSON 格式</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- 参数详细说明 -->
+        <!-- 參數詳細說明 -->
         <div class="param-details">
-          <h3>参数详细说明</h3>
+          <h3>參數詳細說明</h3>
 
           <div class="param-group">
-            <h4>channels - Telegram 频道</h4>
-            <p>指定要搜索的 Telegram 频道，支持以下格式：</p>
+            <h4>channels - Telegram 頻道</h4>
+            <p>指定要搜索的 Telegram 頻道，支援以下格式：</p>
             <div class="code-example">
               <div class="code-header">示例</div>
               <pre><code>channels=alipanshare,tgxiazaiyuan
 channels=["alipanshare", "tgxiazaiyuan"]</code></pre>
             </div>
             <p>
-              <strong>可用的 Telegram 频道列表：（也可以输入其他频道）</strong>
+              <strong>可用的 Telegram 頻道列表：（也可以輸入其他頻道）</strong>
             </p>
             <div class="channels-grid">
               <span class="channel-tag">tgsearchers3</span>
@@ -215,8 +215,8 @@ channels=["alipanshare", "tgxiazaiyuan"]</code></pre>
           </div>
 
           <div class="param-group">
-            <h4>plugins - 搜索插件</h4>
-            <p>可用的搜索插件包括：</p>
+            <h4>plugins - 搜索外掛</h4>
+            <p>可用的搜索外掛包括：</p>
             <div class="plugin-grid">
               <span class="plugin-tag">labi</span>
               <span class="plugin-tag">panta</span>
@@ -232,37 +232,37 @@ channels=["alipanshare", "tgxiazaiyuan"]</code></pre>
           </div>
 
           <div class="param-group">
-            <h4>res - 响应格式</h4>
+            <h4>res - 響應格式</h4>
             <ul>
-              <li><code>merged_by_type</code> - 按类型合并的链接（默认）</li>
-              <li><code>results</code> - 原始搜索结果</li>
-              <li><code>all</code> - 包含所有格式的完整响应</li>
+              <li><code>merged_by_type</code> - 按型別合併的鏈接（預設）</li>
+              <li><code>results</code> - 原始搜索結果</li>
+              <li><code>all</code> - 包含所有格式的完整響應</li>
             </ul>
           </div>
 
           <div class="param-group">
             <h4>src - 搜索源</h4>
             <ul>
-              <li><code>all</code> - 搜索所有源（默认）</li>
-              <li><code>tg</code> - 仅搜索 Telegram 频道</li>
-              <li><code>plugin</code> - 仅搜索插件</li>
+              <li><code>all</code> - 搜索所有源（預設）</li>
+              <li><code>tg</code> - 僅搜索 Telegram 頻道</li>
+              <li><code>plugin</code> - 僅搜索外掛</li>
             </ul>
             <p>
-              <strong>注意：</strong>当 src=tg 时，plugins 参数会被忽略；当
-              src=plugin 时，channels 参数会被忽略。
+              <strong>注意：</strong>當 src=tg 時，plugins 參數會被忽略；當
+              src=plugin 時，channels 參數會被忽略。
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 请求示例 -->
+      <!-- 請求示例 -->
       <section class="section">
-        <h2 class="section__title">请求示例</h2>
+        <h2 class="section__title">請求示例</h2>
 
         <div class="examples">
-          <!-- Health 接口示例 -->
+          <!-- Health 介面示例 -->
           <div class="example">
-            <h3>Health 接口</h3>
+            <h3>Health 介面</h3>
             <div class="code-example">
               <div class="code-header">cURL</div>
               <pre><code>curl -X GET "https://your-domain.com/api/health"</code></pre>
@@ -271,11 +271,11 @@ channels=["alipanshare", "tgxiazaiyuan"]</code></pre>
               <div class="code-header">JavaScript (fetch)</div>
               <pre><code>const response = await fetch('/api/health');
 const data = await response.json();
-console.log('可用插件:', data.plugins);
-console.log('可用频道:', data.channels);</code></pre>
+console.log('可用外掛:', data.plugins);
+console.log('可用頻道:', data.channels);</code></pre>
             </div>
             <div class="code-example">
-              <div class="code-header">响应示例</div>
+              <div class="code-header">響應示例</div>
               <pre><code>{
   "status": "ok",
   "plugins_enabled": true,
@@ -286,29 +286,29 @@ console.log('可用频道:', data.channels);</code></pre>
             </div>
           </div>
 
-          <!-- GET 请求示例 -->
+          <!-- GET 請求示例 -->
           <div class="example">
-            <h3>Search GET 请求</h3>
+            <h3>Search GET 請求</h3>
             <div class="code-example">
               <div class="code-header">cURL</div>
-              <pre><code>curl -X GET "https://your-domain.com/api/search?kw=电影&channels=alipanshare,tgxiazaiyuan&plugins=hunhepan&res=merged_by_type"</code></pre>
+              <pre><code>curl -X GET "https://your-domain.com/api/search?kw=電影&channels=alipanshare,tgxiazaiyuan&plugins=hunhepan&res=merged_by_type"</code></pre>
             </div>
             <div class="code-example">
               <div class="code-header">JavaScript (fetch)</div>
-              <pre><code>const response = await fetch('/api/search?kw=电影&channels=alipanshare,tgxiazaiyuan&plugins=hunhepan&res=merged_by_type');
+              <pre><code>const response = await fetch('/api/search?kw=電影&channels=alipanshare,tgxiazaiyuan&plugins=hunhepan&res=merged_by_type');
 const data = await response.json();</code></pre>
             </div>
           </div>
 
-          <!-- POST 请求示例 -->
+          <!-- POST 請求示例 -->
           <div class="example">
-            <h3>Search POST 请求</h3>
+            <h3>Search POST 請求</h3>
             <div class="code-example">
               <div class="code-header">cURL</div>
               <pre><code>curl -X POST "https://your-domain.com/api/search" \
   -H "Content-Type: application/json" \
   -d '{
-    "kw": "电影",
+    "kw": "電影",
     "channels": ["alipanshare", "tgxiazaiyuan"],
     "plugins": ["hunhepan"],
     "res": "merged_by_type",
@@ -324,7 +324,7 @@ const data = await response.json();</code></pre>
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    kw: '电影',
+    kw: '電影',
     channels: ['alipanshare', 'tgxiazaiyuan'],
     plugins: ['hunhepan'],
     res: 'merged_by_type',
@@ -338,29 +338,29 @@ const data = await response.json();</code></pre>
         </div>
       </section>
 
-      <!-- 响应格式 -->
+      <!-- 響應格式 -->
       <section class="section">
-        <h2 class="section__title">响应格式</h2>
+        <h2 class="section__title">響應格式</h2>
 
         <div class="response-info">
-          <p>所有 API 响应都遵循统一的格式：</p>
+          <p>所有 API 響應都遵循統一的格式：</p>
           <div class="code-example">
-            <div class="code-header">响应结构</div>
+            <div class="code-header">響應結構</div>
             <pre><code>{
   "code": 0,
   "message": "success",
   "data": {
-    // 具体数据内容
+    // 具體數據內容
   }
 }</code></pre>
           </div>
         </div>
 
         <div class="response-types">
-          <h3>响应类型</h3>
+          <h3>響應型別</h3>
 
           <div class="response-type">
-            <h4>merged_by_type 格式 (默认)</h4>
+            <h4>merged_by_type 格式 (預設)</h4>
             <div class="code-example">
               <pre><code>{
   "code": 0,
@@ -372,7 +372,7 @@ const data = await response.json();</code></pre>
         {
           "url": "https://www.aliyundrive.com/s/xxx",
           "password": "1234",
-          "note": "电影资源",
+          "note": "電影資源",
           "datetime": "2024-01-01T12:00:00Z",
           "source": "tg:alipanshare",
           "images": ["https://example.com/image.jpg"]
@@ -382,7 +382,7 @@ const data = await response.json();</code></pre>
         {
           "url": "https://pan.baidu.com/s/xxx",
           "password": "5678",
-          "note": "电视剧资源",
+          "note": "電視劇資源",
           "datetime": "2024-01-01T13:00:00Z",
           "source": "plugin:hunhepan"
         }
@@ -407,8 +407,8 @@ const data = await response.json();</code></pre>
         "unique_id": "unique_123",
         "channel": "alipanshare",
         "datetime": "2024-01-01T12:00:00Z",
-        "title": "电影资源分享",
-        "content": "分享一些电影资源...",
+        "title": "電影資源分享",
+        "content": "分享一些電影資源...",
         "links": [
           {
             "type": "aliyun",
@@ -416,7 +416,7 @@ const data = await response.json();</code></pre>
             "password": "1234"
           }
         ],
-        "tags": ["电影", "高清"],
+        "tags": ["電影", "高清"],
         "images": ["https://example.com/image.jpg"]
       }
     ]
@@ -427,58 +427,58 @@ const data = await response.json();</code></pre>
         </div>
       </section>
 
-      <!-- 错误码 -->
+      <!-- 錯誤碼 -->
       <section class="section">
-        <h2 class="section__title">错误码</h2>
+        <h2 class="section__title">錯誤碼</h2>
 
         <div class="error-codes">
           <table>
             <thead>
               <tr>
-                <th>错误码</th>
-                <th>说明</th>
-                <th>解决方案</th>
+                <th>錯誤碼</th>
+                <th>說明</th>
+                <th>解決方案</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>400</td>
-                <td>请求参数错误</td>
-                <td>检查必填参数 kw 是否提供，参数格式是否正确</td>
+                <td>請求參數錯誤</td>
+                <td>檢查必填參數 kw 是否提供，參數格式是否正確</td>
               </tr>
               <tr>
                 <td>400</td>
-                <td>ext 参数 JSON 格式错误</td>
-                <td>确保 ext 参数是有效的 JSON 格式</td>
+                <td>ext 參數 JSON 格式錯誤</td>
+                <td>確保 ext 參數是有效的 JSON 格式</td>
               </tr>
               <tr>
                 <td>500</td>
-                <td>服务器内部错误</td>
-                <td>请联系管理员或稍后重试</td>
+                <td>伺服器內部錯誤</td>
+                <td>請聯繫管理員或稍後重試</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- 在线测试 -->
+      <!-- 線上測試 -->
       <section class="section">
-        <h2 class="section__title">在线测试</h2>
+        <h2 class="section__title">線上測試</h2>
 
         <div class="test-panel">
           <div class="test-form">
-            <h3>快速测试</h3>
+            <h3>快速測試</h3>
 
             <div class="form-group">
               <label>
-                <span>搜索关键词 (kw) *</span>
-                <input v-model="testKw" placeholder="输入搜索关键词" />
+                <span>搜索關鍵詞 (kw) *</span>
+                <input v-model="testKw" placeholder="輸入搜索關鍵詞" />
               </label>
             </div>
 
             <div class="form-group">
               <label>
-                <span>Telegram 频道 (channels)</span>
+                <span>Telegram 頻道 (channels)</span>
                 <input
                   v-model="testChannels"
                   placeholder="alipanshare,tgxiazaiyuan" />
@@ -487,14 +487,14 @@ const data = await response.json();</code></pre>
 
             <div class="form-group">
               <label>
-                <span>插件 (plugins)</span>
+                <span>外掛 (plugins)</span>
                 <input v-model="testPlugins" placeholder="hunhepan" />
               </label>
             </div>
 
             <div class="form-group">
               <label>
-                <span>响应格式 (res)</span>
+                <span>響應格式 (res)</span>
                 <select v-model="testRes">
                   <option value="merged_by_type">merged_by_type</option>
                   <option value="results">results</option>
@@ -508,21 +508,21 @@ const data = await response.json();</code></pre>
                 class="btn btn--primary"
                 :disabled="!testKw || loading"
                 @click="testGet">
-                Search GET 测试
+                Search GET 測試
               </button>
               <button
                 class="btn btn--secondary"
                 :disabled="!testKw || loading"
                 @click="testPost">
-                Search POST 测试
+                Search POST 測試
               </button>
               <button
                 class="btn btn--info"
                 :disabled="loading"
                 @click="testHealth">
-                Health 接口测试
+                Health 介面測試
               </button>
-              <span v-if="loading" class="loading">请求中...</span>
+              <span v-if="loading" class="loading">請求中...</span>
             </div>
 
             <div v-if="error" class="alert alert--error">{{ error }}</div>
@@ -530,14 +530,14 @@ const data = await response.json();</code></pre>
 
           <div class="test-result">
             <div class="result-header">
-              <h3>响应结果</h3>
+              <h3>響應結果</h3>
               <button v-if="result" class="btn btn--ghost" @click="copyResult">
-                复制结果
+                複製結果
               </button>
             </div>
             <div class="result-content">
               <pre v-if="result">{{ pretty(result) }}</pre>
-              <div v-else class="placeholder">点击上方按钮开始测试</div>
+              <div v-else class="placeholder">點選上方按鈕開始測試</div>
             </div>
           </div>
         </div>
@@ -548,15 +548,15 @@ const data = await response.json();</code></pre>
 
 <script setup lang="ts">
 useSeoMeta({
-  title: "PanHub API 文档",
+  title: "PanHub API 文件",
   description:
-    "PanHub 网盘搜索服务 API 接口文档，包含详细的参数说明、示例代码和响应格式。",
+    "PanHub 網盤搜索服務 API 介面文件，包含詳細的參數說明、示例程式碼和響應格式。",
 });
 
 const config = useRuntimeConfig();
 const apiBase = (config.public?.apiBase as string) || "/api";
 
-// 测试表单数据
+// 測試表單數據
 const testKw = ref("");
 const testChannels = ref("alipanshare,tgxiazaiyuan");
 const testPlugins = ref("hunhepan");
@@ -591,7 +591,7 @@ async function testHealth() {
     const data = await $fetch(`${apiBase}/health`);
     result.value = data;
   } catch (e: any) {
-    error.value = e?.data?.message || e?.message || "请求失败";
+    error.value = e?.data?.message || e?.message || "請求失敗";
   } finally {
     loading.value = false;
   }
@@ -634,7 +634,7 @@ async function testRequest(method: "GET" | "POST") {
       result.value = data;
     }
   } catch (e: any) {
-    error.value = e?.data?.message || e?.message || "请求失败";
+    error.value = e?.data?.message || e?.message || "請求失敗";
   } finally {
     loading.value = false;
   }
